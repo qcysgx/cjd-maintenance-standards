@@ -21,7 +21,8 @@ for (const filename of files) {
   if (!match || !brands.has(match[3])) continue;
   const [, startYear, endYear, brand, model] = match;
   const safeFilename = `${startYear}-${endYear}_${brand}_${model}.html`;
-  let html = await readFile(join(sourceRoot, filename), 'utf8');
+  const raw = await readFile(join(sourceRoot, filename));
+  let html = new TextDecoder('windows-1252').decode(raw);
   html = html
     .replace(/charset=iso-8859-1/gi, 'charset=utf-8')
     .replace(/<link[^>]+DealerConnectStyle\.css[^>]*>/gi, '')
