@@ -287,5 +287,23 @@ export const standards = [
     "model": "自由侠",
     "file": "/standards/2016-2018_Jeep_%E8%87%AA%E7%94%B1%E4%BE%A0.html",
     "sourceFilename": "2016-2018_Jeep_自由侠.html"
+  },
+  {
+    "id": "2021-2024-RAM-霸王龙",
+    "startYear": 2021,
+    "endYear": 2024,
+    "brand": "RAM",
+    "model": "霸王龙",
+    "file": "/standards/2021-2024_RAM_%E9%9C%B8%E7%8E%8B%E9%BE%99.html",
+    "sourceFilename": "2021—2024_RAM_霸王龙.html"
+  },
+  {
+    "id": "2025-2026-RAM-犀牛龙",
+    "startYear": 2025,
+    "endYear": 2026,
+    "brand": "RAM",
+    "model": "犀牛龙",
+    "file": "/standards/2025-2026_RAM_%E7%8A%80%E7%89%9B%E9%BE%99.html",
+    "sourceFilename": "2025—2026_RAM_犀牛龙.html"
   }
 ] as const;

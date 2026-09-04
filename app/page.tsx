@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const years = Array.from({ length: 96 }, (_, index) => 2004 + index);
-const brandOrder = ['Jeep', '道奇', '克莱斯勒'] as const;
+const brandOrder = ['Jeep', '道奇', '克莱斯勒', 'RAM'] as const;
 
 export default function Home() {
   const [year, setYear] = useState('');
@@ -17,9 +17,12 @@ export default function Home() {
   const [searched, setSearched] = useState(false);
 
   const models = useMemo(() => {
-    const matches = standards.filter((item) => !brand || item.brand === brand);
+    const matches = standards.filter((item) =>
+      (!brand || item.brand === brand) &&
+      (!year || (Number(year) >= item.startYear && Number(year) <= item.endYear))
+    );
     return [...new Set(matches.map((item) => item.model))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
-  }, [brand]);
+  }, [brand, year]);
 
   const coverage = useMemo(() => {
     if (!year || !brand) return 0;
@@ -53,8 +56,8 @@ export default function Home() {
     return () => lifecycle.abort();
   }, []);
 
-  function chooseBrand(value: string) {
-    setBrand(value);
+  function chooseBrand(value: string | null) {
+    setBrand(value ?? '');
     setModel('');
     setResult(null);
     setSearched(false);
@@ -94,13 +97,13 @@ export default function Home() {
           <div className="mb-5 flex items-center justify-between gap-4"><div><h2 className="text-xl font-bold">车辆查询</h2><p className="mt-1 text-sm text-muted-foreground">请依次选择三项信息</p></div>{year && brand && <span className="rounded-full bg-[#eef4ee] px-3 py-1 text-xs font-medium text-[#31563a]">当前年款可用车型 {coverage} 个</span>}</div>
           <div className="grid gap-4 lg:grid-cols-[1fr_1fr_1.25fr_auto] lg:items-end">
             <Field label="01  年款" icon={<CalendarDays size={16} />}>
-              <Select value={year} onValueChange={(value) => { setYear(value); setResult(null); setSearched(false); }}><SelectTrigger className="h-12 w-full"><SelectValue placeholder="选择 2004–2099" /></SelectTrigger><SelectContent>{years.map((item) => <SelectItem key={item} value={String(item)}>{item} 年</SelectItem>)}</SelectContent></Select>
+              <Select value={year} onValueChange={(value) => { setYear(value ?? ''); setModel(''); setResult(null); setSearched(false); }}><SelectTrigger className="h-12 w-full"><SelectValue placeholder="选择 2004–2099" /></SelectTrigger><SelectContent>{years.map((item) => <SelectItem key={item} value={String(item)}>{item} 年</SelectItem>)}</SelectContent></Select>
             </Field>
             <Field label="02  品牌" icon={<CarFront size={16} />}>
               <Select value={brand} onValueChange={chooseBrand}><SelectTrigger className="h-12 w-full"><SelectValue placeholder="选择品牌" /></SelectTrigger><SelectContent>{brandOrder.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}</SelectContent></Select>
             </Field>
             <Field label="03  车型" icon={<FileText size={16} />}>
-              <Select value={model} onValueChange={(value) => { setModel(value); setResult(null); setSearched(false); }} disabled={!brand}><SelectTrigger className="h-12 w-full"><SelectValue placeholder={brand ? '选择车型' : '请先选择品牌'} /></SelectTrigger><SelectContent>{models.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}</SelectContent></Select>
+              <Select value={model} onValueChange={(value) => { setModel(value ?? ''); setResult(null); setSearched(false); }} disabled={!brand || !year || models.length === 0}><SelectTrigger className="h-12 w-full"><SelectValue placeholder={!year ? '请先选择年款' : !brand ? '请先选择品牌' : models.length === 0 ? '该年款暂无车型资料' : '选择车型'} /></SelectTrigger><SelectContent>{models.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}</SelectContent></Select>
             </Field>
             <Button onClick={search} disabled={!year || !brand || !model} className="h-12 bg-[#d5a62e] px-7 font-bold text-[#17261c] hover:bg-[#e3b341]"><Search size={18} />查询标准</Button>
           </div>
@@ -108,7 +111,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
-        {result ? <div className="overflow-hidden rounded-[22px] border border-border bg-card shadow-sm"><div className="flex flex-col gap-3 border-b bg-[#f3f6f2] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7"><div><p className="text-sm font-semibold text-[#51705a]">已匹配资料</p><h2 className="mt-1 text-2xl font-black">{year} 年 {result.brand} {result.model}</h2><p className="mt-1 text-sm text-muted-foreground">适用资料范围：{result.startYear}–{result.endYear} 年</p></div><a href={result.file} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-[#31563a]">在新窗口打开 <ChevronRight size={17} /></a></div><iframe title={`${result.brand} ${result.model} 保养标准`} src={result.file} className="h-[68vh] min-h-[560px] w-full bg-white" /></div> : searched ? <EmptyState title="暂无对应保养标准" text={`当前资料库中没有 ${year} 年 ${brand} ${model} 的标准文档。`} /> : <div className="grid gap-5 md:grid-cols-3"><Info icon={<CalendarDays />} value="2004–2099" label="年款选择范围" /><Info icon={<CarFront />} value="3 个品牌" label="Jeep・道奇・克莱斯勒" /><Info icon={<FileText />} value={`${standards.length} 份`} label="当前已录入标准文档" /></div>}
+        {result ? <div className="overflow-hidden rounded-[22px] border border-border bg-card shadow-sm"><div className="flex flex-col gap-3 border-b bg-[#f3f6f2] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7"><div><p className="text-sm font-semibold text-[#51705a]">已匹配资料</p><h2 className="mt-1 text-2xl font-black">{year} 年 {result.brand} {result.model}</h2><p className="mt-1 text-sm text-muted-foreground">适用资料范围：{result.startYear}–{result.endYear} 年</p></div><a href={result.file} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-[#31563a]">在新窗口打开 <ChevronRight size={17} /></a></div><iframe title={`${result.brand} ${result.model} 保养标准`} src={result.file} className="h-[68vh] min-h-[560px] w-full bg-white" /></div> : searched ? <EmptyState title="暂无对应保养标准" text={`当前资料库中没有 ${year} 年 ${brand} ${model} 的标准文档。`} /> : <div className="grid gap-5 md:grid-cols-3"><Info icon={<CalendarDays />} value="2004–2099" label="年款选择范围" /><Info icon={<CarFront />} value="4 个品牌" label="Jeep・道奇・克莱斯勒・RAM" /><Info icon={<FileText />} value={`${standards.length} 份`} label="当前已录入标准文档" /></div>}
       </section>
 
       <footer className="border-t bg-white px-5 py-6 text-center text-sm text-muted-foreground">资料库结构已预留扩展方式，新增规范命名的 HTML 文档后可一键同步。</footer>

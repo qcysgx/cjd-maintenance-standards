@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'CJD 基础保养标准库',
-  description: '按年款、品牌和车型查询 Jeep、道奇与克莱斯勒基础保养标准。',
+  description: '按年款、品牌和车型查询 Jeep、道奇、克莱斯勒与 RAM 基础保养标准。',
 };
 
 export default function RootLayout({

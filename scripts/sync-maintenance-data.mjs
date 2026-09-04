@@ -7,7 +7,7 @@ const projectRoot = join(here, '..');
 const sourceRoot = join(projectRoot, '..');
 const outputRoot = join(projectRoot, 'public', 'standards');
 const dataFile = join(projectRoot, 'app', 'data', 'standards.ts');
-const brands = new Set(['Jeep', '道奇', '克莱斯勒']);
+const brands = new Set(['Jeep', '道奇', '克莱斯勒', 'RAM']);
 const filenamePattern = /^(\d{4})[-—](\d{4})_([^_]+)_(.+)\.html$/i;
 
 await rm(outputRoot, { recursive: true, force: true });
