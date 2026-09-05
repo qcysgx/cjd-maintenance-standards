@@ -154,6 +154,33 @@ export const standards = [
     "sourceFilename": "2014-2015_Jeep_大切诺基.html"
   },
   {
+    "id": "2011-2013-Jeep-大切诺基",
+    "startYear": 2011,
+    "endYear": 2013,
+    "brand": "Jeep",
+    "model": "大切诺基",
+    "file": "/standards/2011-2013_Jeep_%E5%A4%A7%E5%88%87%E8%AF%BA%E5%9F%BA.html",
+    "sourceFilename": "2011-2013_Jeep_大切诺基.html"
+  },
+  {
+    "id": "2010-2010-Jeep-大切诺基",
+    "startYear": 2010,
+    "endYear": 2010,
+    "brand": "Jeep",
+    "model": "大切诺基",
+    "file": "/standards/2010-2010_Jeep_%E5%A4%A7%E5%88%87%E8%AF%BA%E5%9F%BA.html",
+    "sourceFilename": "2010-2010_Jeep_大切诺基.html"
+  },
+  {
+    "id": "2007-2009-Jeep-大切诺基",
+    "startYear": 2007,
+    "endYear": 2009,
+    "brand": "Jeep",
+    "model": "大切诺基",
+    "file": "/standards/2007-2009_Jeep_%E5%A4%A7%E5%88%87%E8%AF%BA%E5%9F%BA.html",
+    "sourceFilename": "2007-2009_Jeep_大切诺基.html"
+  },
+  {
     "id": "2007-2010-Jeep-大切诺基",
     "startYear": 2007,
     "endYear": 2010,
@@ -161,6 +188,15 @@ export const standards = [
     "model": "大切诺基",
     "file": "/standards/2007-2010_Jeep_%E5%A4%A7%E5%88%87%E8%AF%BA%E5%9F%BA.html",
     "sourceFilename": "2007-2010_Jeep_大切诺基.html"
+  },
+  {
+    "id": "2005-2006-Jeep-大切诺基",
+    "startYear": 2005,
+    "endYear": 2006,
+    "brand": "Jeep",
+    "model": "大切诺基",
+    "file": "/standards/2005-2006_Jeep_%E5%A4%A7%E5%88%87%E8%AF%BA%E5%9F%BA.html",
+    "sourceFilename": "2005-2006_Jeep_大切诺基.html"
   },
   {
     "id": "2022-2026-Jeep-大瓦尼格",
@@ -215,6 +251,15 @@ export const standards = [
     "model": "牧马人",
     "file": "/standards/2007-2010_Jeep_%E7%89%A7%E9%A9%AC%E4%BA%BA.html",
     "sourceFilename": "2007-2010_Jeep_牧马人.html"
+  },
+  {
+    "id": "2003-2006-Jeep-牧马人",
+    "startYear": 2003,
+    "endYear": 2006,
+    "brand": "Jeep",
+    "model": "牧马人",
+    "file": "/standards/2003-2006_Jeep_%E7%89%A7%E9%A9%AC%E4%BA%BA.html",
+    "sourceFilename": "2003-2006_Jeep_牧马人.html"
   },
   {
     "id": "2007-2009-Jeep-指挥官",
