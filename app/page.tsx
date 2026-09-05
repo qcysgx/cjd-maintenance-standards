@@ -74,7 +74,7 @@ export default function Home() {
       <header className="border-b border-white/10 bg-[#17261c] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <div className="flex items-center gap-3">
-            <img src="/nut-auto-service.png" alt="NUT AUTO SERVICE" width={76} height={78} className="h-16 w-16 shrink-0 rounded-xl bg-white object-contain sm:h-20 sm:w-20" />
+            <img src="/nut-auto-service.svg" alt="NUT AUTO SERVICE" width={120} height={124} className="h-[75px] w-[72px] shrink-0 object-contain sm:mr-2 sm:h-[95px] sm:w-[92px]" />
             <div><p className="text-sm font-bold tracking-tight sm:text-lg">Jeep 道奇 克莱斯勒 RAM基础保养标准库</p><p className="text-xs text-white/55">车型油液与容量资料查询</p></div>
           </div>
           <div className="hidden items-center gap-2 text-sm text-white/65 sm:flex"><ShieldCheck size={17} className="text-[#e3b341]" />资料源自当前标准文档</div>
