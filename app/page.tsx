@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { CalendarDays, CarFront, ChevronRight, FileText, Gauge, Search, ShieldCheck } from 'lucide-react';
+import { CalendarDays, CarFront, ChevronRight, FileText, Search, ShieldCheck } from 'lucide-react';
 import { standards } from './data/standards';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -74,8 +74,8 @@ export default function Home() {
       <header className="border-b border-white/10 bg-[#17261c] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <div className="flex items-center gap-3">
-            <div className="grid size-10 place-items-center rounded-xl bg-[#e3b341] text-[#17261c]"><Gauge size={22} strokeWidth={2.4} /></div>
-            <div><p className="text-lg font-bold tracking-tight">CJD 基础保养标准库</p><p className="text-xs text-white/55">车型油液与容量资料查询</p></div>
+            <img src="/nut-auto-service.png" alt="NUT AUTO SERVICE" width={76} height={78} className="h-16 w-16 shrink-0 rounded-xl bg-white object-contain sm:h-20 sm:w-20" />
+            <div><p className="text-sm font-bold tracking-tight sm:text-lg">Jeep 道奇 克莱斯勒 RAM基础保养标准库</p><p className="text-xs text-white/55">车型油液与容量资料查询</p></div>
           </div>
           <div className="hidden items-center gap-2 text-sm text-white/65 sm:flex"><ShieldCheck size={17} className="text-[#e3b341]" />资料源自当前标准文档</div>
         </div>
@@ -116,7 +116,7 @@ export default function Home() {
         {result ? <div className="overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_18px_50px_rgba(22,42,28,.08)] sm:rounded-[26px]"><div className="flex flex-col gap-4 border-b bg-[#f3f6f2] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7"><div><p className="text-sm font-semibold text-[#51705a]">已匹配资料</p><h2 className="mt-1 text-xl font-black sm:text-2xl">{year} 年 {result.brand} {result.model}</h2><p className="mt-1 text-sm text-muted-foreground">适用资料范围：{result.startYear}–{result.endYear} 年</p></div><a href={result.file} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#31563a] shadow-xs">在新窗口打开 <ChevronRight size={17} /></a></div><iframe title={`${result.brand} ${result.model} 保养标准`} src={result.file} className="h-[70vh] min-h-[480px] w-full bg-white sm:min-h-[620px]" /></div> : searched ? <EmptyState title="暂无对应保养标准" text={`当前资料库中没有 ${year} 年 ${brand} ${model} 的标准文档。`} /> : <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 sm:gap-5"><Info icon={<CalendarDays />} value="2004–2099" label="年款选择范围" /><Info icon={<CarFront />} value="4 个品牌" label="Jeep・道奇・克莱斯勒・RAM" /><Info icon={<FileText />} value={`${standards.length} 份`} label="当前已录入标准文档" /></div>}
       </section>
 
-      <footer className="border-t bg-white px-5 py-6 text-center text-sm text-muted-foreground">资料库结构已预留扩展方式，新增规范命名的 HTML 文档后可一键同步。</footer>
+      <footer className="border-t bg-white px-5 py-6 text-center text-sm text-muted-foreground"><div className="mx-auto max-w-5xl"><p className="text-lg font-bold text-[#213c2b]">螺丝帽Jeep技术服务中心</p><div className="my-4 flex flex-wrap justify-center gap-4"><a href="tel:18601743060">电话：18601743060</a><a href="mailto:qcysgx@163.com">邮箱：qcysgx@163.com</a></div><details className="border-t pt-4"><summary className="cursor-pointer">网站声明与版权说明</summary><p className="mt-4 text-left text-xs leading-7">本站由螺丝帽Jeep技术服务中心独立运营，非 Jeep、道奇、克莱斯勒或 RAM 品牌官方网站。相关商标、原厂文档及第三方内容的权利归各自权利人所有，仅用于车型识别与技术资料参考，不表示品牌授权或合作关系。本站原创设计、文字及资料整理成果，在法律保护范围内未经许可不得复制、转载或用于商业用途；依法允许的使用除外。保养操作请核对具体车辆配置与最新原厂资料，并由专业人员实施。如涉及权属或侵权问题，请通过上述邮箱联系并提供相关证明，我们将核实处理。</p></details></div></footer>
     </main>
   );
 }
