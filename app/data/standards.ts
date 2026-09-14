@@ -217,6 +217,15 @@ export const standards = [
     "sourceFilename": "2018-2022_Jeep_大指挥官.html"
   },
   {
+    "id": "2024-2027-Jeep-角斗士",
+    "startYear": 2024,
+    "endYear": 2027,
+    "brand": "Jeep",
+    "model": "角斗士",
+    "file": "/standards/2024-2027_Jeep_%E8%A7%92%E6%96%97%E5%A3%AB.html",
+    "sourceFilename": "2024-2027_Jeep_角斗士.html"
+  },
+  {
     "id": "2019-2023-Jeep-角斗士",
     "startYear": 2019,
     "endYear": 2023,
@@ -224,6 +233,24 @@ export const standards = [
     "model": "角斗士",
     "file": "/standards/2019-2023_Jeep_%E8%A7%92%E6%96%97%E5%A3%AB.html",
     "sourceFilename": "2019-2023_Jeep_角斗士.html"
+  },
+  {
+    "id": "2026-2027-Jeep-牧马人",
+    "startYear": 2026,
+    "endYear": 2027,
+    "brand": "Jeep",
+    "model": "牧马人",
+    "file": "/standards/2026-2027_Jeep_%E7%89%A7%E9%A9%AC%E4%BA%BA.html",
+    "sourceFilename": "2026-2027_Jeep_牧马人.html"
+  },
+  {
+    "id": "2024-2025-Jeep-牧马人",
+    "startYear": 2024,
+    "endYear": 2025,
+    "brand": "Jeep",
+    "model": "牧马人",
+    "file": "/standards/2024-2025_Jeep_%E7%89%A7%E9%A9%AC%E4%BA%BA.html",
+    "sourceFilename": "2024-2025_Jeep_牧马人.html"
   },
   {
     "id": "2018-2023-Jeep-牧马人",
